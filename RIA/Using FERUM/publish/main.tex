@@ -1,0 +1,80 @@
+
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and republish this document.
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+    
+    \begin{verbatim}
+clc,clear; format compact; format shortG;
+
+fun = @calc_obj;       % objective function
+nonlcon = @calc_const; % constraint function
+
+lb = [0,0];
+ub = [15,15];
+
+A = [];
+b = [];
+Aeq = [];
+beq = [];
+
+x0 = [7.5,7.5];   % intial guess
+
+options = optimoptions('fmincon','Display','iter','Algorithm','sqp');
+[x,fval,exitflag,output] = fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)
+\end{verbatim}
+
+        \color{lightgray} \begin{verbatim} Iter  Func-count            Fval   Feasibility   Step Length       Norm of   First-order  
+                                                                       step    optimality
+    0           3    1.125000e+02     0.000e+00     1.000e+00     0.000e+00     1.500e+01  
+    1           6    3.340516e+01     1.642e-02     1.000e+00     4.827e+00     1.577e+02  
+    2           9    4.736540e+01     5.316e-03     1.000e+00     1.103e+00     1.029e+01  
+    3          12    5.903970e+01     1.146e-03     1.000e+00     8.015e-01     1.345e+00  
+    4          15    6.347546e+01     8.739e-05     1.000e+00     2.834e-01     8.558e-01  
+    5          18    6.387996e+01     6.052e-07     1.000e+00     2.534e-02     4.244e-02  
+    6          21    6.388281e+01     2.945e-11     1.000e+00     1.783e-04     3.585e-05  
+    7          24    6.388281e+01     1.854e-13     1.000e+00     2.953e-05     6.923e-05  
+    8          27    6.388281e+01     1.156e-13     1.000e+00     2.225e-05     3.175e-06  
+
+Feasible point with lower objective function value found.
+
+
+Local minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the value of the optimality tolerance,
+and constraints are satisfied to within the value of the constraint tolerance.
+
+x =
+       5.6517       5.6517
+fval =
+       63.883
+exitflag =
+     1
+output = 
+  struct with fields:
+
+         iterations: 8
+          funcCount: 27
+          algorithm: 'sqp'
+            message: '↵Local minimum found that satisfies the constraints.↵↵Optimization completed because the objective function is non-decreasing in ↵feasible directions, to within the value of the optimality tolerance,↵and constraints are satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization completed: The relative first-order optimality measure, 2.808716e-07,↵is less than options.OptimalityTolerance = 1.000000e-06, and the relative maximum constraint↵violation, 1.156384e-13, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+    constrviolation: 1.1564e-13
+           stepsize: 2.2249e-05
+       lssteplength: 1
+      firstorderopt: 3.1748e-06
+       bestfeasible: [1×1 struct]
+\end{verbatim} \color{black}
+    
+
+
+\end{document}
+
